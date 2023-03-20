@@ -51,18 +51,21 @@ function inputSize(){
     gameBoard.height = setHeight;
 
 };
+
 function drawLogo(){
     ctx.font = "80px MV Boli";
     ctx.fillStyle = "black";
     ctx.textAlign = "center";
     ctx.fillText("SNAKE!", gameWidth / 2, gameHeight / 2);
 };
+
 function drawInfo(){
     ctx.font = "23px MV Boli";
     ctx.fillStyle = "black";
     ctx.textAlign = "center";
     ctx.fillText("Click anywhere to start the game!", gameWidth / 2, gameHeight / 1.5);
 };
+
 function gameStart(){
     running = true;
 
@@ -104,10 +107,12 @@ function nextTick(){
         displayGameOver();
     }
 };
+
 function clearBoard (){
     ctx.fillStyle = boardBackground;
     ctx.fillRect(0, 0, gameWidth, gameHeight);
 };
+
 function createFood (){
     function randomFood(min, max){
         const randNum = Math.round((Math.random() * (max - min) + min) / unitSize) * unitSize;
@@ -125,10 +130,12 @@ function createFood (){
         }
     }
 };
+
 function drawFood(){
     ctx.fillStyle = foodColor;
     ctx.fillRect(foodX, foodY, unitSize, unitSize);
 };
+
 function moveSnake(){
     const head = {x: snake[0].x + xVelocity,
                   y: snake[0].y + yVelocity};
@@ -145,6 +152,7 @@ function moveSnake(){
         snake.pop();
     }
 };
+
 function drawSnake(){
     ctx.fillStyle = snakeColor;
     ctx.strokeStyle = snakeBorder;
@@ -154,6 +162,7 @@ function drawSnake(){
         ctx.strokeRect(snakePart.x, snakePart.y, unitSize, unitSize);
     })
 };
+
 function changeDirection(event){
     const keyPressed = event.keyCode;
     const LEFT = 37;
@@ -185,6 +194,7 @@ function changeDirection(event){
             break;    
     }
 };
+
 function checkGameOver(){
     switch(true){
         case (snake[0].x < 0 ):
@@ -207,6 +217,7 @@ function checkGameOver(){
         };
     };
 };
+
 function displayGameOver(){
     ctx.font = "50px MV Boli";
     ctx.fillStyle = "black";
@@ -222,6 +233,7 @@ function displayGameOver(){
 
     running = false;
 };
+
 function resetGame(){
     clearTimeout(timeOut);
 
@@ -242,6 +254,7 @@ function resetGame(){
     
     gameStart();
 };
+
 function increaseSpeed(){
     if (score >= 1 && score % 3 == 0 && score <= 24){
         gameAcceleration -= 0.1;
